@@ -1,16 +1,19 @@
 services:
   evolution-api:
-    image: atendareal/evolution-api:latest
+    image: evolutionapi/evolution-api:latest # <--- ESTA ES LA CORRECTA
     container_name: evolution_api
     restart: always
     ports:
-      - "8080:8080" # El puerto por donde entrarás
+      - "9090:9090"
     env_file:
       - .env
     volumes:
-      - ./data:/evolution/instances
+      - evolution_data:/evolution/instances
     networks:
       - evolution_net
+
+volumes:
+  evolution_data:
 
 networks:
   evolution_net:
