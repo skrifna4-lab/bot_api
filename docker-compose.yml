@@ -1,0 +1,17 @@
+services:
+  evolution-api:
+    image: atendareal/evolution-api:latest
+    container_name: evolution_api
+    restart: always
+    ports:
+      - "8080:8080" # El puerto por donde entrarás
+    env_file:
+      - .env
+    volumes:
+      - ./data:/evolution/instances
+    networks:
+      - evolution_net
+
+networks:
+  evolution_net:
+    driver: bridge
